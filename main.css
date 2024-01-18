@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+}
+.navigation {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  height: 60px;
+  background-color: white;
+  box-shadow: 2px 2px 10px#ddd;
+  display: flex;
+  justify-content: space-between;
+  transition: height 0.7s 0s, width 0.7s 0.7s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 300px;
+  height: 400px;
+  transition: height 0.7s 0.7s, width 0.7s 0s;
+}
+
+.navigation .userbox {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.navigation .userbox .name {
+  white-space: nowrap;
+  text-transform: capitalize;
+  font-size: 0.8em;
+  color: #f48c06;
+}
+.navigation .userbox .imgbx {
+  position: relative;
+  background-image: url(zoka.jpg);
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 10px solid white;
+}
+.navigation .menu-toggle {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  cursor: pointer;
+}
+.navigation .menu-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navigation .menu-toggle::before {
+  content: "";
+  background-color: #4721ad;
+  width: 32px;
+  height: 2px;
+  position: absolute;
+  box-shadow: 0 -10px #4721ad;
+  transition: 0.7s;
+}
+.navigation .menu-toggle::after {
+  content: "";
+  background-color: #4721ad;
+  width: 32px;
+  height: 2px;
+  position: absolute;
+  transform: translateY(10px);
+  transition: 0.7s;
+}
+.menu {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  height: calc(100% - 60px);
+  border-top: 1px solid #f13c3c;
+  padding: 20px;
+}
+.menu li {
+  padding: 12px;
+  width: 100%;
+  position: relative;
+}
+.menu li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  height: 1px;
+  background: linear-gradient(to right, #f13c3c 0 10%, #4721ad 10% 100%);
+}
+.menu li:hover {
+  background: #eeeeee9e;
+}
+.menu li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1em;
+  text-transform: capitalize;
+  color: #4721ad;
+}
+.menu li a ion-icon {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #f13c3c;
+}
+/* when active */
+.navigation.active .menu-toggle::before {
+  box-shadow: 0 0 #f13c3c;
+  background-color: #f13c3c;
+  transform: rotate(45deg) scale(1.2);
+}
+.navigation.active .menu-toggle::after {
+  transform: rotate(-45deg) scale(1.2);
+  background-color: #f13c3c;
+}
+.navigation.active .userbox {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+}
+
+.navigation.active .userbox .name {
+  display: block;
+}
